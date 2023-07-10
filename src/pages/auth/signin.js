@@ -32,9 +32,9 @@ export default function Signin() {
           </div>
         ) : (
             <div className="flex flex-col items-center justify-center">
-                <span className="font-bold text-indigo-500 text-2xl mb-10">빅데이터혁신융합대학 학점 이수 관리 시스템</span>
+                <span className="font-bold text-indigo-700 text-2xl">빅데이터혁신융합대학 학점 이수 관리 시스템</span>
               <div>
-              <Image className="" src="/빅데이터혁신융합대학.png" alt="빅데이터 혁신융합대학" width={300} height={200}/>
+              <Image className="" src="/빅데이터로고.png" alt="빅데이터 혁신융합대학" width={300} height={200}/>
               </div>
               <button
                 className={`flex mt-7 w-4/5 items-center justify-center font-bold

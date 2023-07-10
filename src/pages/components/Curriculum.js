@@ -21,10 +21,11 @@ const curriCollection = collection(db, "curriculum");
 const Curriculum = () => {
 
     const [curriculums, setCurriculums] = useState([]);
-    const [curriname, setCurriname] = useState([]);
-    const [catecory, setCategory] = useState("");
+    const [curriname, setCurriname] = useState("");
+    const [category, setCategory] = useState("");
     const [cossname, setCossname] = useState("");
     const [cosscode, setCosscode] = useState("");
+    const [condition, setCondition] = useState("");
     const [credit, setCredit] = useState("");
 
     const columns = [
@@ -33,6 +34,10 @@ const Curriculum = () => {
           accessor: "curriname",
         },
         {
+            Header: "교육과정 분류",
+            accessor: "category",
+          },
+        {
           Header: "교과목명",
           accessor: "cossname",
         },
@@ -40,6 +45,10 @@ const Curriculum = () => {
           Header: "과목 코드",
           accessor: "cosscode",
         },
+        {
+            Header: "과목 분류",
+            accessor: "condition",
+          },
         {
           Header: "학점",
           accessor: "credit",
@@ -70,6 +79,8 @@ const Curriculum = () => {
             curriname:curriname,
             cossname:cossname,
             cosscode:cosscode,
+            category:category,
+            condition:condition,
             credit:credit});
 
         setCurriculums(
@@ -78,11 +89,13 @@ const Curriculum = () => {
             curriname:curriname,
             cossname:cossname,
             cosscode:cosscode,
+            category:category,
+            condition:condition,
             credit:credit}])
 
-        setCurriname("");
         setCossname("");
         setCosscode("");
+        setCondition("");
         setCredit("");
     }
 
@@ -107,7 +120,7 @@ const Curriculum = () => {
             <div className={`box w-[35%]`}>
             <div className="menu">교육과정 추가</div>
                 <div>
-                    <div className={`insidebox my-10`}>
+                    <div className={`insidebox`}>
                         <div className="title">교육과정명</div>
                         <input
                         className={`w-3/5 content`}
@@ -117,17 +130,31 @@ const Curriculum = () => {
                         />
                     </div>
 
-                    <div className={`insidebox my-10`}>
+                    <div className={`insidebox my-7`}>
+                        <div className="title">교육과정 분류</div>
+                        <select 
+                        value={category}
+                        className='content w-3/5'
+                        onChange={(e) => {setCategory(e.target.value)}}
+                        >
+                            <option value="">교육과정 분류</option>
+                            <option value="표준MD">표준MD</option>
+                            <option value="연계융합MD">연계융합MD</option>
+                        </select>
+                    </div>         
+
+                    <div className={`insidebox my-7`}>
                         <div className="title">교과목명</div>
                         <input
-                        className='content'
+                        className='content w-3/5'
+                        
                         placeholder="교과목명을 입력하세요"
                         onChange={(e) => setCossname(e.target.value)}
                         value={cossname}
                         />
                     </div>
 
-                    <div className="insidebox my-10">
+                    <div className="insidebox my-7">
                         <div className="title">고유코드</div>
                         <input
                         className={`content w-3/5`}
@@ -135,9 +162,23 @@ const Curriculum = () => {
                         onChange={(e) => setCosscode(e.target.value)}
                         value={cosscode}
                         />
-                    </div>                    
+                    </div>  
+
+                    <div className={`insidebox`}>
+                        <div className="title">교과목 분류</div>
+                        <select 
+                        value={condition}
+                        className='content w-3/5'
+                        onChange={(e) => {setCondition(e.target.value)}}
+                        >
+                            <option value="">교과목 분류</option>
+                            <option value="표준필수">표준필수</option>
+                            <option value="표준선택">표준선택</option>
+                            <option value="연계융합">연계융합</option>
+                        </select>
+                    </div>                  
                     
-                    <div className="insidebox my-10">
+                    <div className="insidebox my-7">
                         <div className="title">학점</div>
                         <input
                         className={`content w-3/5`}
@@ -149,7 +190,7 @@ const Curriculum = () => {
 
                     <div className={`insidebox place-content-end`}>
                         <button 
-                        className="mr-2 mt-5 w-1/4 justify-self-end p-1 mb-7 bg-indigo-700 text-white border border-indigo-700 rounded hover:bg-white hover:text-indigo-700"
+                        className="mr-2 w-1/4 justify-self-end p-1 mb-7 bg-indigo-700 text-white border border-indigo-700 rounded hover:bg-white hover:text-indigo-700"
                         onClick={addCurri}>교육과정 추가
                         </button>
                     </div>
