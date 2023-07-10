@@ -18,6 +18,11 @@ function S_Table({ columns, data, onDelete }) {
     setGlobalFilter(event.target.value);
   };
 
+  if (!rows) {
+    return null; // rows가 없는 경우 렌더링하지 않고 종료
+  }
+
+
   return (
     <div className="w-full text-center">
       <input
