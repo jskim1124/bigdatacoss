@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useTable, useGlobalFilter, useSortBy } from "react-table";
 
 function S_Table({ columns, data, onDelete }) {

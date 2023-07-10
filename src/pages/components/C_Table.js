@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useTable, useGlobalFilter, useSortBy } from "react-table";
 
 function S_Table({ columns, data, onDelete }) {
@@ -17,10 +17,6 @@ function S_Table({ columns, data, onDelete }) {
     setFilterInput(event.target.value);
     setGlobalFilter(event.target.value);
   };
-
-  if (!rows || !headerGroups) {
-    return null; // rows 또는 headerGroups가 없는 경우 렌더링하지 않고 종료
-  }
 
   return (
     <div className="w-full text-center">
